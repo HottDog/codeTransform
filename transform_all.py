@@ -5,7 +5,7 @@ import sys
 # coding=utf-8
 #一些常量定义
 # COMMON_PATH = "E:\\test_workspace\\First"
-COMMON_PATH ="test2.lua"
+COMMON_PATH ="test.lua"
 #用到的函数
 #T("")替换函数
 def rrr(m):

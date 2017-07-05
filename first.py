@@ -38,9 +38,12 @@ def traverse(path):
 	for file in files:
 		if not os.path.isdir(path+"\\"+file):
 			print(file)
-			f = open(path+"\\"+file,"r")
-			result = chardet.detect(f.read())
-			print(result)
+			try:
+				f = open(path+"\\"+file,"r")
+				result = chardet.detect(f.read())
+				print("文件的编码格式：",result)
+			except UnicodeDecodeError:
+				print("UnicodeDecodeError")
 		else:
 			print('文件夹:'+path+"\\"+file)
 			traverse(path+"\\"+file)
