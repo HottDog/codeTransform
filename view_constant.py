@@ -1,3 +1,8 @@
 view_path = "E:\\workspace\\chineseChessOverSea\\release\\xiangqi_android\\Resource\\scripts\\view\\Android_800_480\\"
 file_extension_lua = ".lua"
 own_view_new = "own_view_new"
+ISO = "ISO-8859-1"
+UTF8 = "utf-8"
+ASC = "ascii"
+GB = "GB2312"
+UTF_SIG = "UTF-8-SIG"

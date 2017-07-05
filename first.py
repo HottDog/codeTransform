@@ -31,15 +31,15 @@ if s1 == "hah":
 	print("字符串可以比较")
 ssss = "jjaha "+"ss"
 print(ssss)
-url = "E:\\test_workspace\\First"
-
+# url = "E:\\test_workspace\\First"
+url = "E:\\workspace\\chineseChessOverSea\\release\\xiangqi_android\\Resource\\scripts"
 def traverse(path):
 	files =os.listdir(path)
 	for file in files:
 		if not os.path.isdir(path+"\\"+file):
 			print(file)
 			try:
-				f = open(path+"\\"+file,"r")
+				f = open(path+"\\"+file,"rb+")
 				result = chardet.detect(f.read())
 				print("文件的编码格式：",result)
 			except UnicodeDecodeError:
@@ -49,3 +49,8 @@ def traverse(path):
 			traverse(path+"\\"+file)
 
 traverse(url)
+# f=open("test2.lua","rb+")
+# result = chardet.detect(f.read())
+# print("文件的编码格式：",result)
+# if result["encoding"] == "ISO-8859-1":
+# 	print("这个文件是ISO-8859-1")

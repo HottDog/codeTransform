@@ -1,4 +1,5 @@
 import re
+import chardet
 def rrr(m):
     return "T("+m.group(0)+")"
 def rrr2(m):
@@ -23,3 +24,11 @@ def pr_all(mm):
                 print("group",count,":",m_read.group(count))
 def pl():
     print("------------------------------------")
+
+def getFileFormat(file):
+    f=open(file,"rb+")
+    result = chardet.detect(f.read())
+    print("文件的编码格式：",result)
+    # if result["encoding"] == "ISO-8859-1":
+    # print("这个文件是ISO-8859-1")
+    return result["encoding"]
