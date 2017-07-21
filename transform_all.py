@@ -2,11 +2,27 @@ import re
 import codecs
 import os
 import sys
+import func
+import chardet
 # coding=utf-8
 #一些常量定义
-# COMMON_PATH = "E:\\test_workspace\\First"
-COMMON_PATH ="test.lua"
+COMMON_PATH = "E:\\test_workspace\\First"
+# COMMON_PATH ="test.lua"
+
+#目前存在的一些处理不好的特殊情况：
+# 1、local str = string.format(T("给 %s 赠送 %s"),node.targetName,node.gift.name or T("未知"))
+#    return string.format(T("%d万"),math.floor(num/10000))
+#    return string.format(T("%.1f万"),math.floor(num/1000)/10)
+# 2、scripts\data\end_data.lua
 #用到的函数
+def getFileFormat(file):
+    f=open(file,"rb+")
+    result = chardet.detect(f.read())
+    # print("文件的编码格式：",result)
+    # if result["encoding"] == "ISO-8859-1":
+    # print("这个文件是ISO-8859-1")
+    f.close()
+    return result["encoding"]
 #T("")替换函数
 def rrr(m):
     if m.group(11) != None :
@@ -23,10 +39,21 @@ def rrr(m):
     else:
         return m.group(0)
 
+#判断该文件是否是lua后缀的文件,true为是
+def isLuaFile(path):
+    if os.path.splitext(path)[1] == ".lua":
+        return True
+    else:
+        return False
+
 #处理单个文本函数
 def processFile(file):
+    if not isLuaFile(file):
+        return
     try:
-        f = codecs.open(file,"r+",'utf-8')
+        fileFormat = getFileFormat(file)
+        f = codecs.open(file,"r+",fileFormat)
+        # f = codecs.open(file,"r+",'utf-8')
         s1 = f.read()
     except OSError:
         print("file's format is not utf-8")
@@ -91,3 +118,5 @@ if len(sys.argv)>1:
 else:
     path = COMMON_PATH
 traverse(path)
+
+

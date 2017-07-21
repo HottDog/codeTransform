@@ -20,7 +20,9 @@ def traverse(path):
             traverse(path+"\\"+file)
 
 def processFile(file):
-    if func.getFileFormat(file) == view_constant.UTF:
+    fileFormat = func.getFileFormat(file)
+    f = codecs.open(file,"r+",fileFormat)
+
 
 
 

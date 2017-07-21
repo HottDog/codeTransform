@@ -48,7 +48,16 @@ def traverse(path):
 			print('文件夹:'+path+"\\"+file)
 			traverse(path+"\\"+file)
 
-traverse(url)
+#判断该文件是否是lua后缀的文件,true为是
+def isLuaFile(path):
+	print(os.path.splitext(path)[1])
+	if os.path.splitext(path)[1] == ".lua":
+		return True
+	else:
+		return False
+
+print(isLuaFile("test1.lua"))
+# traverse(url)
 # f=open("test2.lua","rb+")
 # result = chardet.detect(f.read())
 # print("文件的编码格式：",result)

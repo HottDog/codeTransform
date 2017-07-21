@@ -6,3 +6,4 @@ def readUTF8(file):
     f = codecs.open("test1.lua","r+",'utf-8')
     return f
 def readISO(file):
+    f = codecs.open(file,"r+",)

@@ -31,4 +31,5 @@ def getFileFormat(file):
     print("文件的编码格式：",result)
     # if result["encoding"] == "ISO-8859-1":
     # print("这个文件是ISO-8859-1")
+    f.close()
     return result["encoding"]
